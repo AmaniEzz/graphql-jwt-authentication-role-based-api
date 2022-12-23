@@ -48,7 +48,7 @@ For development, you will only need Node.js and npm installed in your environeme
 
 #### 1) Install dependencies using following command:
 
-    $ npm i
+    $ npm install
 
 #### 2) Run docker-compose.yml file to setup a mongoDB database:
 
@@ -111,8 +111,7 @@ query {
         email
         role
         }
-    }
-
+}
 ```
 
 ### Login Query
@@ -123,7 +122,6 @@ Query
 mutation login($input: LoginInput!){
     login(input: $input)
 }
-
 ```
 
 Customer Input
@@ -146,7 +144,6 @@ Admin Input
         "password": "password123admin"
     }
 }
-
 ```
 
 ### Create a product
@@ -169,23 +166,23 @@ mutation createProduct($input: CreateProductInput!){
         averageRating
     }
 }
-
 ```
 
 input
 
 ```
 {
-"name": "Solid Gold Chicken Recipe for adult cats",
-"price": {
-"amount": 100,
-"currency": "USD"
-},
-"category": Pets,
-"quantity": 10,
-"description": "blah blah blah blah blah blahblah blah",
+    "input: {
+        "name": "Solid Gold Chicken Recipe for adult cats",
+        "price": {
+            "amount": 100,
+            "currency": "USD"
+        },
+        "category": Pets,
+        "quantity": 10,
+        "description": "blah blah blah blah blah blahblah blah",
+    }
 }
-
 ```
 
 ### Get products
@@ -207,7 +204,6 @@ query {
         ratings
     }
 }
-
 ```
 
 ### Get a single product
@@ -240,5 +236,4 @@ Input
         "productId": "63a5cf766226ece670de60a2"
     }
 }
-
 ```
