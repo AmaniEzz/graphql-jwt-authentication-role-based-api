@@ -110,7 +110,7 @@ query {
         id
         email
         role
-        }
+    }
 }
 ```
 
