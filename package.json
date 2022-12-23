@@ -1,0 +1,35 @@
+{
+  "name": "typegaphql-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/bin/www/server.ts",
+  "scripts": {
+    "dev": "ts-node-dev --require dotenv/config --respawn --transpile-only  src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "amany",
+  "license": "ISC",
+  "dependencies": {
+    "@typegoose/typegoose": "^10.0.0",
+    "apollo-server": "^3.11.1",
+    "bcrypt": "^5.1.0",
+    "class-validator": "^0.14.0",
+    "config": "^3.3.8",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.0.3",
+    "graphql": "^15.8.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.8.1",
+    "nanoid": "^4.0.0",
+    "reflect-metadata": "^0.1.13",
+    "type-graphql": "^1.1.1"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
+    "@types/config": "^3.3.0",
+    "@types/cookie-parser": "^1.4.3",
+    "@types/jsonwebtoken": "^8.5.9",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^4.9.4"
+  }
+}
