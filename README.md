@@ -146,6 +146,14 @@ Admin Input
 }
 ```
 
+### Logout Query 
+
+```
+mutation {
+  logout
+}
+```
+
 ### Create a product
 
 Query
@@ -233,7 +241,60 @@ Input
 ```
 {
     "input": {
-        "productId": "63a5cf766226ece670de60a2"
+        "productId": a real id
     }
+}
+```
+
+
+### Update a product
+
+Query
+
+```
+mutation updateProduct($productId: String!, $input: UpdateProductInput!){
+    updateProduct(productId: $productId, input: $input){
+        id
+        name
+        quantity
+        category
+        price {
+            amount
+            currency
+        }
+        purchaseCount
+        ratings
+        averageRating
+    }
+}
+```
+
+input
+
+```
+{
+    "input: {
+        "name": "New Name",
+        "price": {
+            "amount": 200,
+            "currency": "USD"
+        },
+        "category": Pets,
+        "quantity": 20,
+        "description": "blah blah blah blah blah blah",
+    }
+}
+```
+
+
+
+### Rate a Product
+
+```
+mutation rateProduct($productId: String!, $rate: Number!){
+  rateProduct(productId: $productId, rate: $rate){
+    ratings
+    averageRating
+  }
 }
 ```
