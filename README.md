@@ -18,7 +18,7 @@ A GraphQL API that implements JWT Authentication using TypeGraphQL, Node.js, Mon
 - A user can signup/login.
 - An admin can signup/login.
 - Users can view public details of any product.
-- Only logged in users can view number if times the product has been purchased.
+- Only logged in users can view number of times the product has been purchased.
 - Only admin can add/edit a product.
 - Only logged in users can rate a product.
 - Everyone can view list of products or view a single products's details.
