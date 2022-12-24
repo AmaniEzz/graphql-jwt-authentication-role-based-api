@@ -3,5 +3,5 @@ import { Response, Request } from "express";
 export interface Context {
   req: Request;
   res: Response;
-  user: User;
+  user: User | undefined;
 }

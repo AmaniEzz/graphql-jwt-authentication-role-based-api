@@ -1,21 +1,29 @@
+import { GraphQLError } from "graphql";
 import { AuthChecker } from "type-graphql";
 import { Context } from "./types/context";
+import { domain } from "./types/error-code";
 
 // create auth checker function
 export const authChecker: AuthChecker<Context> = (
   { context: { user } },
   authorizedRoles
-) => {
+): boolean | Promise<boolean> => {
+  const errorMsg = "Access Not Allowed";
   if (authorizedRoles?.length === 0) {
     // if `@Authorized()`, check only if user exists
-    return user !== undefined;
+    if (!user) {
+      throw new GraphQLError(errorMsg, {
+        extensions: { code: domain.FORBIDDEN },
+      });
+    } else return true;
   }
 
   // there are some roles defined now
-
   if (!user) {
     // and if no user, restrict access
-    return false;
+    throw new GraphQLError(errorMsg, {
+      extensions: { code: domain.FORBIDDEN },
+    });
   }
 
   if (user.role?.some((role) => authorizedRoles.includes(role))) {
@@ -24,5 +32,9 @@ export const authChecker: AuthChecker<Context> = (
   }
 
   // no roles matched, restrict access
-  return false;
+  else {
+    throw new GraphQLError(errorMsg, {
+      extensions: { code: domain.FORBIDDEN },
+    });
+  }
 };

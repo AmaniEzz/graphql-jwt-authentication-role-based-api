@@ -1,6 +1,7 @@
-import { ForbiddenError } from "apollo-server-core";
-import jwt from "jsonwebtoken";
+import jwt, { JsonWebTokenError } from "jsonwebtoken";
 import config from "config";
+import { GraphQLError } from "graphql";
+import { domain } from "./types/error-code";
 
 // Cookie Options
 export const accessTokenExpiresIn = config.get<number>("accessTokenExpiresIn");
@@ -33,10 +34,16 @@ export function signJwt(
   privateKey: string,
   options?: jwt.SignOptions | undefined
 ): string {
-  return jwt.sign(object, privateKey, {
-    ...(options && options),
-    algorithm: "RS256",
-  });
+  try {
+    return jwt.sign(object, privateKey, {
+      ...(options && options),
+      algorithm: "RS256",
+    });
+  } catch (e) {
+    throw new GraphQLError(e, {
+      extensions: { code: domain.TOKEN_GENERATION_ERROR },
+    });
+  }
 }
 
 export function verifyJwt<T>(token: string, key: string): T {
@@ -44,6 +51,8 @@ export function verifyJwt<T>(token: string, key: string): T {
     const decoded = jwt.verify(token, key) as T;
     return decoded;
   } catch (e) {
-    throw new ForbiddenError(e);
+    throw new GraphQLError(e, {
+      extensions: { code: domain.TOKEN_VERIFICATION_ERROR },
+    });
   }
 }

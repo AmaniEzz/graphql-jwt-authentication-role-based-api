@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { MongooseError } from "mongoose";
 import config from "config";
 
 export async function connectToMongo() {
@@ -7,7 +7,6 @@ export async function connectToMongo() {
     await mongoose.connect(config.get("dbUri"));
     console.log("🚀 Database connected successfully");
   } catch (error) {
-    console.error(error);
-    process.exit(1);
+    throw new MongooseError("Database Connection Failed");
   }
 }
