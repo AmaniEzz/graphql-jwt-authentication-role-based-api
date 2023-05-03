@@ -1,6 +1,6 @@
 # Role-Based GraphQL CRUD API With Node.js and TypeScript
 
-This project aims at demonstrating how to implement a secure GraphQL API that implements JWT Authentication and role based access control.
+This project aims at demonstrating how to implement a secure GraphQL API that leverages JWT for Authentication and role based access control.
 
 This is not a full ecommerce API, this project only focuses on the authentication and authorization concept using
 a simple `Products service` to showcase how role-based access works and how JWT is used to secure the API.
