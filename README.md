@@ -1,6 +1,9 @@
-# GraphQL API for JWT Authentication and Authorization
+# Role-Based GraphQL CRUD API With Node.js and TypeScript
 
-A GraphQL API that implements JWT Authentication using TypeGraphQL, Node.js, MongoDB, and Apollo Server.
+This project aims at demonstrating how to implement a secure GraphQL API that implements JWT Authentication and role based access control.
+
+This is not a full ecommerce API, this project only focuses on the authentication and authorization concept using
+a simple `Products service` to showcase how role-based access works and how JWT is used to secure the API.
 
 ## Technologies
 
@@ -17,18 +20,18 @@ A GraphQL API that implements JWT Authentication using TypeGraphQL, Node.js, Mon
 
 - A user can signup/login.
 - An admin can signup/login.
-- Users can view public details of any product.
-- Only logged in users can view number of times the product has been purchased.
-- Only admin can add/edit a product.
-- Only logged in users can rate a product.
-- Everyone can view list of products or view a single products's details.
+- Unauthorized users can view a list of all products.
+- Unauthorized users can view a single products's public details.
+- Only authorized users can view the number of times a product has been purchased.
+- Only authorized users can rate a product.
+- Only authorized admin can add/edit a product.
 
 ---
 
 ### Future Features
 
-- Only logged in users can add products to their shopping cart.
-- User can only view their own shopping cart.
+- Only authorized users can add products to their shopping cart.
+- authorized user can only view their own shopping cart.
 
 ---
 
@@ -146,7 +149,7 @@ Admin Input
 }
 ```
 
-### Logout Query 
+### Logout Query
 
 ```
 mutation {
@@ -246,7 +249,6 @@ Input
 }
 ```
 
-
 ### Update a product
 
 Query
@@ -285,8 +287,6 @@ input
     }
 }
 ```
-
-
 
 ### Rate a Product
 
