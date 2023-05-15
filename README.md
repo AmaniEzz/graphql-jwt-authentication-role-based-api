@@ -8,10 +8,9 @@ a simple `Products service` to showcase how role-based access works and how JWT 
 ## Technologies
 
 - Node.js
-- Express.js
 - TypeScript
 - TypeGraphQL
-- TypeGoose
+- Typegoose
 - MongoDB
 - JSON Web Token
 - Apollo GraphQL server
